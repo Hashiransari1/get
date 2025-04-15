@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calculator {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .calculator h2 {
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .calculator input {
+      padding: 10px 15px;
+      margin: 10px 5px;
+      width: 120px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .buttons {
+      margin: 20px 0;
+    }
+
+    .buttons button {
+      padding: 10px 20px;
+      margin: 0 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #4a69bd;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttons button:hover {
+      background-color: #3756a0;
+    }
+
+    .result {
+      font-size: 18px;
+      margin-top: 20px;
+      color: #222;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>Simple Calculator</h2>
+    <input type="number" id="num1" placeholder="First Number" />
+    <input type="number" id="num2" placeholder="Second Number" />
+    
+    <div class="buttons">
+      <button onclick="calculate('add')">Add</button>
+      <button onclick="calculate('subtract')">Subtract</button>
+      <button onclick="calculate('multiply')">Multiply</button>
+    </div>
+    
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculate(operation) {
+      const n1 = parseFloat(document.getElementById("num1").value);
+      const n2 = parseFloat(document.getElementById("num2").value);
+      const resultBox = document.getElementById("result");
+
+      if (isNaN(n1) || isNaN(n2)) {
+        resultBox.textContent = "Please enter valid numbers.";
+        resultBox.style.color = "red";
+        return;
+      }
+
+      let result;
+      switch (operation) {
+        case 'add':
+          result = n1 + n2;
+          break;
+        case 'subtract':
+          result = n1 - n2;
+          break;
+        case 'multiply':
+          result = n1 * n2;
+          break;
+        default:
+          result = "Invalid Operation";
+      }
+
+      resultBox.textContent = `Result: ${result}`;
+      resultBox.style.color = "#222";
+    }
+  </script>
+
+</body>
+</html>
